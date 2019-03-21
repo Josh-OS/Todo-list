@@ -7,7 +7,12 @@
 
 <body>
  <div class="pad">
-  <ul>First task</ul>
-  <ul>Second task</ul>
-  <ul>Third task</ul>
+ <h3 class="title">To Do</h3>
+  <div class="todo-list">
+ <ul>
+   <li>First task</li>
+   <li>Second task</li>
+   <li>Third task</li>
+ </ul>
+  </div> 
  </div>
