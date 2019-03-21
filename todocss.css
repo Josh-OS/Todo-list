@@ -1,0 +1,12 @@
+div.pad {
+  border-radius: 18px;
+  background: #b1c7a1;
+  padding: 20px;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
