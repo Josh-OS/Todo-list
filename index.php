@@ -22,8 +22,8 @@
 
   <div class="adder">
    <form action="" method="get">
-    <input class="tbox" type="text" name="addbox">
-    <button>ADD</button>
+    <input type="text" name="addbox">
+    <span class="sub"><input type="submit" class="sub" value="ADD"></span>
    </form>
   </div>
 
