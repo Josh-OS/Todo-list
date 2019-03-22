@@ -30,3 +30,13 @@
  </div>
 </body>
 </html>
+
+
+<?php
+
+//Add btn is clicked.
+if ($_GET['addbox']) {
+	$container = $_GET["addbox"];
+		echo $container;
+		echo " made alive by Jesus";
+}
