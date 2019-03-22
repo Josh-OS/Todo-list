@@ -1,6 +1,7 @@
 div.pad {
   border-radius: 18px;
-  background: #b1c7a1;
+ /* background: hsl(51, 100%, 74%);*/ /*Yellowi*/
+  background: hsl(95, 25%, 71%); /*Green*/
   padding: 20px;
   width: 500px;
   height: 500px;
@@ -12,7 +13,20 @@ div.pad {
 }
 
 h3.title {
-	top:30px;
+	position: absolute;
+	top:5px;
 	left:30px;
 	color: hsl(119, 65%, 96%);
+}
+
+div.todo-list {
+	position: absolute;
+	top: 50px;
+	left: 30px;
+}
+
+div.adder {
+	position: absolute;
+	top: 485px;
+	left: 30px;
 }
