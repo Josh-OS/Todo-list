@@ -17,19 +17,24 @@
 <?php
 	//CSV TO SCREEN
 	echo '<div class="todo-list">';
-	$container = file_get_contents('file_todo.csv');
-	$lister =[];
+	if (file_exists('file_todo.csv')) { //To prevent error: check first if file exists.
 
-	foreach(explode("\n", $container) as $contains) { //string to organized array
-		[$id, $task_list] = explode(',', $contains);
+		$container = file_get_contents('file_todo.csv');
+		$lister =[];
 
-		$lister[] = [
-			'id' => $id,
-			'task_list' => $task_list
-		];
+		foreach(explode("\n", $container) as $contains) { //string to organized array
+			if ($contains) //To prevent warning: will prevent execution if the $contains is empty.
+			[$id, $task_list] = explode(',', $contains);
+
+			$lister[] = [
+				'id' => $id,
+				'task_list' => $task_list
+			];
 	}
-	echo $lister['id'];
-	echo '</div>';
+
+	}
+	echo '</div>';	
+
 ?>
 
   <div class="adder">
@@ -47,17 +52,21 @@
 <?php
 
 //Add btn is clicked.
-  if ($_GET['addbox']) {
+	if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
 
-	//TO CSV
-	$container = $_GET; //GET to array
-	$container['id'] = uniqid(); //append generated id
+		if ($_GET['addbox']) {
 
-	file_put_contents('file_todo.csv', (implode(',', $container) . "\n"), FILE_APPEND);
+			//TO CSV
+			$container = $_GET; //GET to array
+			$container['id'] = uniqid(); //append generated id
+
+			file_put_contents('file_todo.csv', (implode(',', $container) . "\n"), FILE_APPEND);
 
 
   }
+	
+
+	}
 
 ?>
-
 	
