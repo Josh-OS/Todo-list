@@ -1,3 +1,21 @@
+<?php
+//Add btn is clicked.
+	if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
+
+		if ($_GET['addbox']) {
+
+			//TO CSV
+			$container = $_GET; //GET to array
+			$container['id'] = uniqid(); //append generated id
+
+			file_put_contents('file_todo.csv', (implode(',', $container) . "\n"), FILE_APPEND);
+
+
+  }
+	
+
+	}
+?>
 
 
 <html>
@@ -22,15 +40,32 @@
 		$container = file_get_contents('file_todo.csv');
 		$lister =[];
 
-		foreach(explode("\n", $container) as $contains) { //string to organized array
-			if ($contains) //To prevent warning: will prevent execution if the $contains is empty.
-			[$id, $task_list] = explode(',', $contains);
+		echo '<table class=tlist>'; //create table
 
-			$lister[] = [
-				'id' => $id,
-				'task_list' => $task_list
-			];
-	}
+		foreach(explode("\n", $container) as $contains) { //string to organized array
+			if ($contains) { //To prevent warning: will prevent execution if the $contains is empty.
+				[$task_list, $id] = explode(',', $contains);
+	
+				$lister[] = [
+					'id' => $id,
+					'task_list' => $task_list
+				];
+	
+				//print on screen
+				
+				echo '<tr>';
+				echo '<th>' . $id . '</th>';
+				echo '<th>' . $task_list . '</th>';
+				echo '</tr>';
+	
+
+
+			}
+				
+
+		}
+
+		echo '</table>'; //end table
 
 	}
 	echo '</div>';	
@@ -49,24 +84,4 @@
 </html>
 
 
-<?php
-
-//Add btn is clicked.
-	if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
-
-		if ($_GET['addbox']) {
-
-			//TO CSV
-			$container = $_GET; //GET to array
-			$container['id'] = uniqid(); //append generated id
-
-			file_put_contents('file_todo.csv', (implode(',', $container) . "\n"), FILE_APPEND);
-
-
-  }
-	
-
-	}
-
-?>
 	

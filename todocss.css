@@ -21,8 +21,14 @@ h3.title {
 
 div.todo-list {
 	position: absolute;
-	top: 50px;
-	left: 30px;
+	top: 60px;
+	left: 45px;
+}
+
+table.tlist, td {
+	color: hsl(304, 19%, 60%); 
+
+	font-size: 25px;
 }
 
 div.adder {
@@ -45,11 +51,12 @@ input[type=text] {
 input[type=submit].sub {
  	width: 70;
 	height: 30;
-  	background-color: hsl(304, 12%, 54%);
-  	color: white;
+  	background-color: hsl(19, 43%, 63%);
+	color: white;
  	margin: 8px 0;
   	border: 1px;
   	border-radius: 4px;
 	display: inline;
 	margin-left: 5px;
+	font-weight: bold;
 }
