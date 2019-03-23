@@ -54,8 +54,8 @@
 				//print on screen
 				
 				echo '<tr>';
-				echo '<th class=checkbox>' . $id . '</th>';
-				echo '<th>' . $task_list . '</th>';
+				echo '<td class=checkbox>' . '<div class=divbox></div>' .  '</td>';
+				echo '<td>' . $task_list . '</td>';
 				echo '</tr>';
 	
 

@@ -27,9 +27,29 @@ div.todo-list {
 
 table.tlist, td {
 	color: hsl(304, 19%, 60%); 
-
 	font-size: 25px;
 }
+
+td.checkbox {
+	border-collapse: separate;
+	height: 20px;
+	width: 50px;
+	padding: 1px;
+	}
+
+div.divbox {
+	border-color: hsl(304, 19%, 60%); 
+	border-width: 4px;
+	border-style: solid;
+	border-radius: 7px;
+	border-collapse: separate;
+	height: 25px;
+	width: 25px;
+	padding: 1px;
+	background-color: hsl(95, 25%, 71%);
+	}
+
+
 
 div.adder {
 	position: absolute;
