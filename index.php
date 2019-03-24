@@ -1,20 +1,89 @@
 <?php
 //Add btn is clicked.
-	if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
+if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
 
-		if ($_GET['addbox']) {
+	if ($_GET['addbox']) {
 
-			//TO CSV
-			$container = $_GET; //GET to array
-			$container['id'] = uniqid(); //append generated id
+		//Code
+		
+		//TO CSV
+		$container = $_GET; //GET to array
+		$container['id'] = uniqid(); //append generated id
 
-			file_put_contents('file_todo.csv', (implode(',', $container) . "\n"), FILE_APPEND);
+		file_put_contents('file_todo.csv', (implode(',', $container) . "\n"), FILE_APPEND);
 
-
-  }
+		//Code
+ 	 }
 	
+}
 
+
+
+//Check box is clicked
+
+
+	if($_GET) {
+
+		if($_GET['checkdone']) {
+
+			//Code
+			
+			
+			$container = file_get_contents('file_todo.csv');
+			$lister =[];
+			$newcontainer =[]; //added
+			foreach(explode("\n", $container) as $contains) { //string to organized array
+				if ($contains) { //To prevent warning: will prevent execution if the $contains is empty.
+					[$task_list, $id] = explode(',', $contains);
+
+					if ($id == $_GET['checkdone']) {
+
+						$lister[] = [
+							'id' => $id,
+							'task_list' => $task_list
+					];
+					}
+				//$newcontainer = explode(',', $contains); //added
+
+				}
+					//New array to CSVA
+					$newcontainer[] = [//added
+						'id' => $id,
+						'task_list' => $task_list
+					];
+
+
+
+			}
+
+			file_put_contents('DONE.csv', (implode(',', $lister[0]) . "\n"), FILE_APPEND);
+/*		//	echo $lister[0]['id'];
+
+			foreach($newcontainer as $index => $contain) {
+				if($contain['id'] === $_GET['checkdone']) {
+					echo "$contain \n";
+					unset($newcontainer[$index]);
+				}
+				$fields = null;
+
+				foreach($newcontainer as $contain) {
+					if ($contain['id']) {
+						$field .= implode(',', $contain) . "\n";
+
+					}
+				}
+				file_put_contents('file_todo.csv', $field);
+			}
+
+*/
+
+		//	var_dump($newcontainer);
+			$contains = NULL;			
+			$lister = NULL;
+			//Code
+		}
 	}
+
 ?>
 
 
@@ -54,11 +123,10 @@
 				//print on screen
 				
 				echo '<tr>';
-				echo '<td class=checkbox>' . '<div class=divbox></div>' .  '</td>';
+				echo '<td class=checkbox>' . '<a href="?checkdone=' . $id . '">' . '<div class=divbox></div>' . '</a>'  . '</td>';
 				echo '<td>' . $task_list . '</td>';
 				echo '</tr>';
 	
-
 
 			}
 				
