@@ -1,4 +1,6 @@
 <?php
+include_once 'extlib.php';
+
 //Add btn is clicked.
 if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
 
@@ -19,7 +21,7 @@ if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
 
 
 
-//Check box is clicked
+//Check a box is clicked
 
 
 	if($_GET) {
@@ -39,45 +41,35 @@ if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
 					if ($id == $_GET['checkdone']) {
 
 						$lister[] = [
-							'id' => $id,
-							'task_list' => $task_list
+							'task_list' => $task_list,
+							'id' => $id
 					];
 					}
 				//$newcontainer = explode(',', $contains); //added
 
 				}
-					//New array to CSVA
-					$newcontainer[] = [//added
-						'id' => $id,
-						'task_list' => $task_list
-					];
+				
+				//New array for CSVA
+				$newcontainer[] = [//added
+					'task_list' => $task_list,
+					'id' => $id
+				];
 
 
 
 			}
+
 
 			file_put_contents('DONE.csv', (implode(',', $lister[0]) . "\n"), FILE_APPEND);
-/*		//	echo $lister[0]['id'];
+		//	echo $lister[0]['id'];
 
-			foreach($newcontainer as $index => $contain) {
-				if($contain['id'] === $_GET['checkdone']) {
-					echo "$contain \n";
-					unset($newcontainer[$index]);
-				}
-				$fields = null;
-
-				foreach($newcontainer as $contain) {
-					if ($contain['id']) {
-						$field .= implode(',', $contain) . "\n";
-
-					}
-				}
-				file_put_contents('file_todo.csv', $field);
-			}
-
-*/
-
+			importFile();
+			deleteById($_GET['checkdone']);
+	
 		//	var_dump($newcontainer);
+		//	var_dump(importFile());
+
+
 			$contains = NULL;			
 			$lister = NULL;
 			//Code
@@ -116,8 +108,8 @@ if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
 				[$task_list, $id] = explode(',', $contains);
 	
 				$lister[] = [
-					'id' => $id,
-					'task_list' => $task_list
+					'task_list' => $task_list,
+					'id' => $id
 				];
 	
 				//print on screen
