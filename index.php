@@ -2,19 +2,11 @@
 include_once 'extlib.php';
 
 //Add btn is clicked.
-if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
+if ($_GET) {
 
 	if ($_GET['addbox']) {
 
-		//Code
-		
-		//TO CSV
-		$container = $_GET; //GET to array
-		$container['id'] = uniqid(); //append generated id
-
-		file_put_contents('file_todo.csv', (implode(',', $container) . "\n"), FILE_APPEND);
-
-		//Code
+		savetodo();
  	 }
 	
 }
@@ -33,7 +25,7 @@ if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
 			
 			$container = file_get_contents('file_todo.csv');
 			$lister =[];
-			$newcontainer =[]; //added
+
 			foreach(explode("\n", $container) as $contains) { //string to organized array
 				if ($contains) { //To prevent warning: will prevent execution if the $contains is empty.
 					[$task_list, $id] = explode(',', $contains);
@@ -45,29 +37,17 @@ if ($_GET) { //To prevent warning: will prevent execution if $_GET is empty.
 							'id' => $id
 					];
 					}
-				//$newcontainer = explode(',', $contains); //added
-
 				}
-				
-				//New array for CSVA
-				$newcontainer[] = [//added
-					'task_list' => $task_list,
-					'id' => $id
-				];
-
 
 
 			}
 
 
-			file_put_contents('DONE.csv', (implode(',', $lister[0]) . "\n"), FILE_APPEND);
-		//	echo $lister[0]['id'];
+			savedone($lister);
 
 			importFile();
 			deleteById($_GET['checkdone']);
 	
-		//	var_dump($newcontainer);
-		//	var_dump(importFile());
 
 
 			$contains = NULL;			
