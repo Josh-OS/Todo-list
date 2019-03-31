@@ -85,3 +85,48 @@ input[type=submit].sub {
 	margin-left: 5px;
 	font-weight: bold;
 }
+
+div.tab {
+	position: relative;
+	height: 55px;
+	width: 100%;
+	top: 550px;
+	display: inline-block;
+	text-align: center;
+}
+
+div.Label {
+	height: 25px;
+	width: 50px;
+	position:relative;
+	top: 5;
+	padding: 5 35 5 35;
+	display: inline-block;
+	text-decoration: none;
+	color: #B5A4B4;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+
+.strike {
+	text-decoration: line-through;
+}
+
+.todos {
+	padding: 5px;
+}
+
+.dones{
+	padding: 5px;
+} 
+
+span.counter {
+	padding: 10px;
+	background-color: #D7E4CE;
+	border-radius: 100%;
+	margin: 10px;
+}
+

@@ -48,6 +48,20 @@ function deleteById($id)
 
 
 //New functions
+$doneactive;
+$donetask = -1;
+$todotask = -1;
+
+//Done Counter
+$doneTASKS = file_get_contents('DONE.csv');
+foreach(explode("\n", $doneTASKS) as $num) {
+	++$donetask;
+}
+//To do Counter
+$todoTASKS = file_get_contents('file_todo.csv');
+foreach(explode("\n", $todoTASKS) as $num) {
+	++$todotask;
+}
 
 
 function csvwrite($val, $to) {
